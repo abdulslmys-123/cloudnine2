@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Cloud Nine Specialty Coffee — Sheikh Zayed, Giza</title>
+<meta name="description" content="Cloud Nine Specialty Coffee — Specialty coffee & fresh bakeries in Sheikh Zayed, Giza. 3 locations. 4.6★ on Google. Open 7AM–1AM."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+
+:root{
+  --teal:      #00A99D;
+  --teal-dark: #007d74;
+  --teal-dim:  #00877c;
+  --cream:     #f8f4ee;
+  --warm:      #f0e9dc;
+  --latte:     #e2d0b8;
+  --espresso:  #1e1209;
+  --roast:     #3a1f0d;
+  --mocha:     #5c3420;
+  --text:      #1e1209;
+  --muted:     #7a6455;
+  --white:     #ffffff;
+  --ff-serif:  'Cormorant Garamond',Georgia,serif;
+  --ff-sans:   'Jost',system-ui,sans-serif;
+  --ff-script: 'Dancing Script',cursive;
+}
+
+body{background:var(--cream);color:var(--text);font-family:var(--ff-sans);font-weight:300;overflow-x:hidden}
+
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--warm)}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+
+/* ===== NOISE ===== */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;opacity:.35}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:70px;transition:background .4s,box-shadow .4s}
+nav.scrolled{background:rgba(248,244,238,.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,169,157,.12)}
+.nav-logo{display:flex;flex-direction:column;align-items:flex-start;cursor:pointer;text-decoration:none}
+.nav-logo-script{font-family:var(--ff-script);font-size:1.6rem;color:var(--espresso);line-height:1.1}
+.nav-logo-sub{font-size:.48rem;letter-spacing:4px;text-transform:uppercase;color:var(--teal);margin-top:1px}
+.nav-links{display:flex;gap:2.25rem;align-items:center}
+.nav-link{font-size:.68rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--roast);text-decoration:none;position:relative;transition:color .3s}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-link:hover{color:var(--teal)}
+.nav-link:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--teal);color:#fff;padding:.5rem 1.5rem;font-size:.62rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background .3s,transform .2s}
+.nav-cta:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--espresso);transition:all .3s}
+
+/* ===== MOBILE MENU ===== */
+.mob{position:fixed;inset:0;background:var(--cream);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.75rem;opacity:0;pointer-events:none;transform:translateY(-16px);transition:opacity .4s,transform .4s}
+.mob.open{opacity:1;pointer-events:all;transform:none}
+.mob-link{font-family:var(--ff-serif);font-size:2.5rem;font-weight:300;color:var(--espresso);text-decoration:none;transition:color .2s}
+.mob-link:hover{color:var(--teal)}
+
+/* ===== HERO ===== */
+.hero{height:100vh;min-height:680px;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('storefront.jpg') top center/cover no-repeat;transform:scale(1.06);transition:transform 7s ease}
+.hero-bg.loaded{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,18,9,.78) 0%,rgba(30,18,9,.42) 55%,rgba(0,169,157,.15) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 3rem;max-width:740px}
+.h-eye{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.h-eye-line{width:36px;height:1px;background:var(--teal)}
+.h-eye span{font-size:.58rem;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:rgba(232,213,183,.8)}
+.hero-title{font-family:var(--ff-serif);font-size:clamp(3.2rem,6.5vw,5.6rem);font-weight:300;color:var(--cream);line-height:1.02;margin-bottom:1.5rem}
+.hero-title em{display:block;font-style:italic;color:rgba(0,220,210,.85)}
+.hero-sub{font-size:.98rem;font-weight:300;color:rgba(248,244,238,.78);line-height:1.85;max-width:420px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-teal{background:var(--teal);color:#fff;padding:.85rem 2.25rem;font-family:var(--ff-sans);font-size:.64rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background .3s,transform .25s,box-shadow .3s}
+.btn-teal:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,169,157,.35)}
+.btn-outline-w{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45);padding:.85rem 2.25rem;font-family:var(--ff-sans);font-size:.64rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-outline-w:hover{border-color:#fff;background:rgba(255,255,255,.08);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(248,244,238,.5);font-size:.52rem;letter-spacing:3px;text-transform:uppercase;z-index:2;animation:bobDown 2.5s ease-in-out infinite}
+.hero-scroll-line{width:1px;height:46px;background:linear-gradient(to bottom,rgba(0,169,157,.7),transparent)}
+@keyframes bobDown{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.hero-badges{position:absolute;right:3rem;bottom:3rem;display:flex;flex-direction:column;gap:.75rem;z-index:2}
+.h-badge{background:rgba(30,18,9,.72);backdrop-filter:blur(10px);border:1px solid rgba(0,169,157,.35);padding:.75rem 1.25rem;display:flex;align-items:center;gap:.75rem}
+.h-badge-icon{font-size:1.2rem}
+.h-badge-num{font-family:var(--ff-serif);font-size:1.15rem;color:var(--teal)}
+.h-badge-txt{font-size:.68rem;color:var(--latte)}
+
+/* ===== MARQUEE ===== */
+.marquee-strip{background:var(--teal);padding:.85rem 0;overflow:hidden}
+.marquee-inner{display:flex;gap:0;white-space:nowrap;animation:marq 28s linear infinite}
+.marquee-item{display:inline-flex;align-items:center;gap:1.25rem;padding:0 1.75rem;font-size:.58rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.85);flex-shrink:0}
+.m-sep{color:rgba(255,255,255,.45);font-size:.75rem}
+@keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ===== SECTION ===== */
+.section{padding:6.5rem 3rem;max-width:1320px;margin:0 auto}
+.eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem}
+.eyebrow-line{width:28px;height:1px;background:var(--teal)}
+.eyebrow span{font-size:.56rem;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--teal)}
+.sec-title{font-family:var(--ff-serif);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:300;line-height:1.18;color:var(--espresso)}
+.sec-title em{font-style:italic;color:var(--teal)}
+
+/* ===== SLOGAN BAR ===== */
+.slogan-bar{text-align:center;padding:3.5rem 2rem;background:var(--espresso);position:relative;overflow:hidden}
+.slogan-bar::before{content:'☕';position:absolute;font-size:12rem;opacity:.04;top:50%;left:50%;transform:translate(-50%,-50%)}
+.slogan-script{font-family:var(--ff-script);font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(--teal);display:block;margin-bottom:.5rem}
+.slogan-sub{font-size:.65rem;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:rgba(232,213,183,.45)}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-img-wrap{position:relative}
+.about-img-main{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.about-img-accent{position:absolute;bottom:-2rem;right:-2rem;width:48%;aspect-ratio:1;object-fit:cover;border:6px solid var(--cream)}
+.about-label{position:absolute;top:2rem;left:-1.5rem;background:var(--teal);color:#fff;padding:.5rem 1rem;font-size:.58rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg)}
+.about-text p{font-size:.97rem;line-height:1.92;color:var(--muted);margin-bottom:1.5rem}
+.about-text p strong{color:var(--espresso);font-weight:500}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--latte)}
+.a-stat-num{font-family:var(--ff-serif);font-size:2.4rem;font-weight:400;color:var(--teal);display:block;line-height:1}
+.a-stat-lbl{font-size:.68rem;letter-spacing:.5px;color:var(--muted);margin-top:.3rem}
+
+/* ===== FEATURE PILLS ===== */
+.pills-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,169,157,.08);border:1px solid rgba(0,169,157,.2);color:var(--teal);padding:.35rem .85rem;font-size:.62rem;font-weight:500;letter-spacing:.5px;border-radius:2px}
+.pill-icon{font-size:.85rem}
+
+/* ===== FEATS ===== */
+.feats-dark{background:var(--espresso);padding:5rem 3rem}
+.feats-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.feat-card{padding:2rem 1.5rem;border:1px solid rgba(0,169,157,.12);text-align:center;transition:border-color .3s,transform .3s}
+.feat-card:hover{border-color:rgba(0,169,157,.45);transform:translateY(-5px)}
+.feat-icon{font-size:2rem;display:block;margin-bottom:1rem}
+.feat-title{font-family:var(--ff-serif);font-size:1.2rem;color:var(--cream);margin-bottom:.6rem}
+.feat-text{font-size:.78rem;line-height:1.7;color:rgba(226,208,184,.55)}
+
+/* ===== LOCATIONS ===== */
+.locations-section{background:var(--warm)}
+.loc-inner{max-width:1320px;margin:0 auto;padding:6.5rem 3rem}
+.loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.loc-card{background:var(--cream);border-bottom:3px solid transparent;padding:2rem;transition:border-color .3s,transform .3s,box-shadow .3s;cursor:default}
+.loc-card:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.loc-num{font-family:var(--ff-serif);font-size:2.5rem;color:rgba(0,169,157,.15);font-weight:400;line-height:1;margin-bottom:.75rem}
+.loc-name{font-family:var(--ff-serif);font-size:1.2rem;color:var(--espresso);margin-bottom:.5rem}
+.loc-addr{font-size:.78rem;line-height:1.7;color:var(--muted);margin-bottom:1.25rem}
+.loc-tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,169,157,.1);color:var(--teal);padding:.3rem .75rem;font-size:.58rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(0,169,157,.2)}
+.loc-cta{display:block;margin-top:1.25rem;font-size:.62rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--teal);text-decoration:none;transition:color .2s}
+.loc-cta:hover{color:var(--teal-dark)}
+
+/* ===== HOURS ===== */
+.hours-row{display:flex;flex-direction:column;gap:0;margin-top:1.5rem}
+.hours-item{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(0,169,157,.1);font-size:.8rem}
+.hours-day{color:var(--espresso);font-weight:500}
+.hours-time{color:var(--muted)}
+.hours-today .hours-day,.hours-today .hours-time{color:var(--teal);font-weight:500}
+.open-badge{background:rgba(0,169,157,.1);color:var(--teal);border:1px solid rgba(0,169,157,.25);padding:.2rem .65rem;font-size:.55rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-left:.75rem}
+
+/* ===== MENU ===== */
+.menu-section{background:var(--cream)}
+.menu-inner{max-width:1320px;margin:0 auto;padding:6.5rem 3rem}
+.menu-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:3.5rem}
+.menu-photo{aspect-ratio:4/3;overflow:hidden}
+.menu-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:saturate(.9)}
+.menu-photo:hover img{transform:scale(1.06);filter:saturate(1.1)}
+
+.menu-tabs{display:flex;gap:0;border-bottom:1px solid var(--latte);margin-bottom:2.5rem;overflow-x:auto}
+.menu-tab{padding:.7rem 1.6rem;font-size:.62rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted);cursor:pointer;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .3s;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none}
+.menu-tab:hover{color:var(--espresso)}
+.menu-tab.active{color:var(--teal);border-bottom-color:var(--teal)}
+.menu-panel{display:none}
+.menu-panel.active{display:block}
+
+.menu-section-head{font-family:var(--ff-serif);font-size:1rem;font-weight:500;color:var(--teal);letter-spacing:1px;margin:2rem 0 .75rem;padding-bottom:.5rem;border-bottom:1px solid rgba(0,169,157,.15)}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--latte)}
+.menu-item{background:var(--cream);padding:1.4rem 1.6rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;transition:background .2s}
+.menu-item:hover{background:var(--warm)}
+.mi-name{font-family:var(--ff-serif);font-size:1.05rem;font-weight:500;color:var(--espresso);margin-bottom:.2rem}
+.mi-desc{font-size:.74rem;color:var(--muted);line-height:1.55}
+.mi-tag{font-size:.52rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;background:var(--teal);color:#fff;padding:.18rem .5rem;display:inline-block;margin-top:.4rem}
+.mi-tag.hot{background:var(--mocha)}
+.mi-price{font-family:var(--ff-serif);font-size:1.05rem;color:var(--teal);white-space:nowrap;flex-shrink:0;padding-top:3px}
+
+/* ===== GALLERY ===== */
+.gallery-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(3,230px);gap:5px;background:var(--latte);padding:5px}
+.gm-img{overflow:hidden;position:relative}
+.gm-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,.46,.45,.94),filter .4s;filter:saturate(.88)}
+.gm-img:hover img{transform:scale(1.07);filter:saturate(1.1)}
+.gm-img:nth-child(1){grid-column:span 5;grid-row:span 2}
+.gm-img:nth-child(2){grid-column:span 4}
+.gm-img:nth-child(3){grid-column:span 3}
+.gm-img:nth-child(4){grid-column:span 4}
+.gm-img:nth-child(5){grid-column:span 3}
+.gm-img:nth-child(6){grid-column:span 3}
+.gm-img:nth-child(7){grid-column:span 4}
+.gm-img:nth-child(8){grid-column:span 5}
+.gm-overlay{position:absolute;inset:0;background:rgba(0,169,157,0);transition:background .3s}
+.gm-img:hover .gm-overlay{background:rgba(0,169,157,.12)}
+
+/* ===== PHILOSOPHY SPLIT ===== */
+.philo-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.philo-left{background:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85') center/cover;position:relative}
+.philo-left-ov{position:absolute;inset:0;background:rgba(30,18,9,.58);display:flex;align-items:center;justify-content:center;padding:3.5rem}
+.philo-quote{font-family:var(--ff-serif);font-size:1.75rem;font-weight:300;font-style:italic;color:var(--cream);line-height:1.5;text-align:center}
+.philo-author{display:block;font-family:var(--ff-sans);font-size:.58rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-top:1.5rem;font-style:normal}
+.philo-right{background:var(--espresso);padding:4.5rem 4rem;display:flex;flex-direction:column;justify-content:center;gap:0}
+.philo-item{display:flex;gap:1.5rem;align-items:flex-start;padding:2rem 0;border-bottom:1px solid rgba(0,169,157,.1)}
+.philo-item:last-child{border-bottom:none}
+.philo-num{font-family:var(--ff-serif);font-size:2.2rem;font-weight:300;color:rgba(0,169,157,.4);line-height:1;flex-shrink:0;width:2.8rem}
+.philo-ttl{font-family:var(--ff-serif);font-size:1.15rem;color:var(--cream);margin-bottom:.4rem}
+.philo-txt{font-size:.78rem;line-height:1.75;color:rgba(226,208,184,.55)}
+
+/* ===== REVIEWS ===== */
+.reviews-section{background:var(--warm)}
+.reviews-inner{max-width:1320px;margin:0 auto;padding:6.5rem 3rem}
+.reviews-header{text-align:center;margin-bottom:3.5rem}
+.rating-big{display:inline-flex;align-items:center;gap:1.25rem;background:var(--cream);padding:1rem 2rem;margin-top:1.5rem;border-bottom:3px solid var(--teal)}
+.rb-num{font-family:var(--ff-serif);font-size:3.5rem;font-weight:300;color:var(--teal);line-height:1}
+.rb-stars{color:#f5a623;font-size:1.2rem;letter-spacing:2px;display:block;line-height:1}
+.rb-count{font-size:.65rem;color:var(--muted);letter-spacing:1px;margin-top:.2rem}
+.review-highlights{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.rh-chip{background:var(--cream);border:1px solid rgba(0,169,157,.2);color:var(--teal);padding:.4rem 1rem;font-size:.62rem;font-weight:500;letter-spacing:.5px}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rev-card{background:var(--cream);padding:2rem;border-bottom:2px solid transparent;transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.rev-card:hover{border-color:var(--teal);transform:translateY(-4px)}
+.rev-card::before{content:'"';font-family:Georgia,serif;font-size:5rem;line-height:.7;color:rgba(0,169,157,.12);position:absolute;top:1rem;left:1.5rem}
+.rev-stars{color:#f5a623;font-size:.85rem;letter-spacing:1px;margin-bottom:1rem}
+.rev-text{font-size:.88rem;line-height:1.85;color:var(--muted);margin-bottom:1.5rem;font-style:italic;position:relative}
+.reviewer{display:flex;align-items:center;gap:.75rem}
+.rev-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--latte)}
+.rev-name{font-size:.8rem;font-weight:500;color:var(--espresso)}
+.rev-date{font-size:.68rem;color:var(--muted)}
+.g-badge{margin-left:auto;display:flex;align-items:center;gap:3px;font-size:.62rem;color:var(--muted)}
+.rev-cta-wrap{text-align:center;margin-top:2.5rem}
+.btn-dark{background:var(--espresso);color:var(--cream);padding:.85rem 2.25rem;font-family:var(--ff-sans);font-size:.64rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:background .3s,transform .2s}
+.btn-dark:hover{background:var(--roast);transform:translateY(-2px)}
+
+/* ===== AMENITIES ===== */
+.amenities-section{padding:5rem 3rem;max-width:1320px;margin:0 auto}
+.amenity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem}
+.amenity-group{background:var(--warm);padding:1.75rem}
+.ag-title{font-family:var(--ff-sans);font-size:.58rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.ag-list{display:flex;flex-direction:column;gap:.55rem}
+.ag-item{display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:var(--muted)}
+.ag-check{color:var(--teal);font-size:.9rem;flex-shrink:0}
+
+/* ===== VISIT / MAP ===== */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--espresso)}
+.visit-info{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.visit-title{font-family:var(--ff-serif);font-size:2.4rem;font-weight:300;color:var(--cream);margin-bottom:2.5rem;line-height:1.2}
+.visit-title em{font-style:italic;color:var(--teal)}
+.v-block{margin-bottom:1.75rem}
+.v-label{font-size:.54rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem}
+.v-value{font-size:.9rem;color:var(--latte);line-height:1.85}
+.v-divider{width:36px;height:1px;background:rgba(0,169,157,.25);margin:1.25rem 0}
+.visit-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.75rem}
+.btn-teal-o{background:transparent;border:1px solid var(--teal);color:var(--teal);padding:.8rem 2rem;font-family:var(--ff-sans);font-size:.62rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-teal-o:hover{background:var(--teal);color:#fff}
+.visit-map{position:relative;min-height:480px}
+.visit-map iframe{width:100%;height:100%;border:none;filter:grayscale(.2) sepia(.1)}
+.map-pin{position:absolute;top:1.25rem;left:1.25rem;background:var(--espresso);color:var(--teal);padding:.65rem 1.1rem;font-size:.65rem;font-weight:500;letter-spacing:1px;display:flex;align-items:center;gap:.4rem;border:1px solid rgba(0,169,157,.3)}
+
+/* ===== CTA BANNER ===== */
+.cta-banner{background:url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=80') center/cover;position:relative;padding:8rem 3rem;text-align:center}
+.cta-banner::before{content:'';position:absolute;inset:0;background:rgba(30,18,9,.8)}
+.cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.cta-script{font-family:var(--ff-script);font-size:1.6rem;color:var(--teal);display:block;margin-bottom:.75rem}
+.cta-title{font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--cream);margin-bottom:1.25rem;line-height:1.2}
+.cta-sub{font-size:.9rem;color:rgba(248,244,238,.65);line-height:1.75;margin-bottom:2.5rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ===== INSTAGRAM ===== */
+.insta-section{padding:5rem 3rem;max-width:1320px;margin:0 auto;text-align:center}
+.insta-label{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
+.insta-handle{font-family:var(--ff-serif);font-size:1.5rem;color:var(--espresso);margin-bottom:.5rem}
+.insta-stats{font-size:.75rem;color:var(--muted);margin-bottom:2.5rem}
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.ig-img{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer}
+.ig-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .4s;filter:saturate(.85)}
+.ig-img:hover img{transform:scale(1.08);filter:saturate(1.1)}
+.ig-hover{position:absolute;inset:0;background:rgba(0,169,157,0);display:flex;align-items:center;justify-content:center;transition:background .3s;font-size:1.5rem;opacity:0}
+.ig-img:hover .ig-hover{background:rgba(0,169,157,.35);opacity:1}
+
+/* ===== FOOTER ===== */
+footer{background:#0e0705;padding:4rem 3rem 2rem}
+.ft{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(0,169,157,.1)}
+.ft-logo{font-family:var(--ff-script);font-size:2rem;color:var(--teal);display:block;margin-bottom:.25rem}
+.ft-logo-sub{font-size:.5rem;letter-spacing:4px;text-transform:uppercase;color:rgba(0,169,157,.5)}
+.ft-desc{font-size:.8rem;color:rgba(226,208,184,.38);line-height:1.85;margin-top:1.25rem;max-width:260px}
+.ft-phone{margin-top:1.25rem;font-size:.82rem;color:rgba(0,169,157,.7);display:flex;align-items:center;gap:.4rem}
+.ft-head{font-size:.55rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(0,169,157,.6);margin-bottom:1.25rem}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.ft-links a{font-size:.8rem;color:rgba(226,208,184,.4);text-decoration:none;transition:color .2s;cursor:pointer}
+.ft-links a:hover{color:var(--teal)}
+.ft-bottom{max-width:1320px;margin:0 auto;padding-top:1.75rem;display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:rgba(226,208,184,.25)}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal.v{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-36px);transition:opacity .9s ease,transform .9s ease}
+.reveal-l.v{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(36px);transition:opacity .9s ease,transform .9s ease}
+.reveal-r.v{opacity:1;transform:none}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-img-accent{display:none}
+  .feats-inner{grid-template-columns:repeat(2,1fr)}
+  .loc-grid{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:repeat(2,1fr)}
+  .menu-photos{grid-template-columns:repeat(2,1fr)}
+  .philo-wrap{grid-template-columns:1fr}
+  .philo-left{min-height:320px}
+  .reviews-grid{grid-template-columns:1fr}
+  .amenity-grid{grid-template-columns:repeat(2,1fr)}
+  .visit-grid{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr 1fr}
+  .insta-grid{grid-template-columns:repeat(3,1fr)}
+  .gallery-mosaic{grid-template-rows:repeat(5,180px)}
+  .gm-img:nth-child(1){grid-column:span 6;grid-row:span 2}
+  .gm-img:nth-child(2){grid-column:span 6}
+  .gm-img:nth-child(3){grid-column:span 6}
+  .gm-img:nth-child(4){grid-column:span 6}
+  .gm-img:nth-child(5){grid-column:span 6}
+  .gm-img:nth-child(6){grid-column:span 6}
+  .gm-img:nth-child(7),.gm-img:nth-child(8){display:none}
+}
+@media(max-width:768px){
+  nav{padding:0 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-content{padding:0 1.5rem}
+  .hero-badges{display:none}
+  .section,.feats-inner,.menu-inner,.loc-inner,.reviews-inner,.amenities-section,.insta-section,.visit-info{padding:4rem 1.5rem}
+  .menu-grid{grid-template-columns:1fr}
+  .feats-inner{grid-template-columns:1fr}
+  .amenity-grid{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr;gap:2rem}
+  .ft-bottom{flex-direction:column;gap:.5rem;text-align:center}
+  .insta-grid{grid-template-columns:repeat(2,1fr)}
+  .cta-banner{padding:5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+
+<!-- Mobile overlay -->
+<div class="mob" id="mob">
+  <a class="mob-link" onclick="closeMob()" href="#about">About</a>
+  <a class="mob-link" onclick="closeMob()" href="#menu">Menu</a>
+  <a class="mob-link" onclick="closeMob()" href="#locations">Locations</a>
+  <a class="mob-link" onclick="closeMob()" href="#reviews">Reviews</a>
+  <a class="mob-link" onclick="closeMob()" href="#visit">Visit</a>
+  <a class="btn-teal" onclick="closeMob()" href="tel:01000639806" style="margin-top:.5rem">📞 01000639806</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-script">Cloud Nine</span>
+    <span class="nav-logo-sub">Specialty Coffee</span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#menu">Menu</a>
+    <a class="nav-link" href="#locations">Locations</a>
+    <a class="nav-link" href="#reviews">Reviews</a>
+    <a class="nav-link" href="#visit">Visit Us</a>
+  </div>
+  <a class="nav-cta" href="tel:01000639806">📞 01000639806</a>
+  <button class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="hbg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="h-eye reveal"><div class="h-eye-line"></div><span>Sheikh Zayed · Giza · Est. 2020</span></div>
+    <h1 class="hero-title reveal" style="transition-delay:.1s">
+      Above the clouds,<br><em>every single sip.</em>
+    </h1>
+    <p class="hero-sub reveal" style="transition-delay:.2s">
+      Specialty coffee &amp; fresh bakeries, crafted with love in Sheikh Zayed. Three cosy locations, one obsession — <em style="font-style:italic;color:rgba(0,220,210,.8)">great coffee.</em>
+    </p>
+    <div class="hero-btns reveal" style="transition-delay:.3s">
+      <a href="#menu" class="btn-teal">Explore Menu</a>
+      <a href="#locations" class="btn-outline-w">Find a Location</a>
+    </div>
+  </div>
+  <div class="hero-badges">
+    <div class="h-badge"><span class="h-badge-icon">⭐</span><div><div class="h-badge-num">4.6</div><div class="h-badge-txt">209 Google Reviews</div></div></div>
+    <div class="h-badge"><span class="h-badge-icon">☕</span><div><div class="h-badge-num">3</div><div class="h-badge-txt">Locations in Zayed</div></div></div>
+    <div class="h-badge"><span class="h-badge-icon">📸</span><div><div class="h-badge-num">9.5K</div><div class="h-badge-txt">Instagram Followers</div></div></div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip"><div class="marquee-inner" id="mi">
+  <span class="marquee-item">Specialty Coffee ☕ <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Fresh Bakeries 🥐 <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Dine-In · Takeaway · Kerbside <span class="m-sep">✦</span></span>
+  <span class="marquee-item">4.6 ★ on Google <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Spanish Latte — Fan Favourite <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Open Till 1 AM Daily <span class="m-sep">✦</span></span>
+  <span class="marquee-item">3 Locations · Sheikh Zayed <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Pistachio Croissant 🥐 <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Specialty Coffee ☕ <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Fresh Bakeries 🥐 <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Dine-In · Takeaway · Kerbside <span class="m-sep">✦</span></span>
+  <span class="marquee-item">4.6 ★ on Google <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Spanish Latte — Fan Favourite <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Open Till 1 AM Daily <span class="m-sep">✦</span></span>
+  <span class="marquee-item">3 Locations · Sheikh Zayed <span class="m-sep">✦</span></span>
+  <span class="marquee-item">Pistachio Croissant 🥐 <span class="m-sep">✦</span></span>
+</div></div>
+
+<!-- SLOGAN -->
+<div class="slogan-bar">
+  <span class="slogan-script">"Making coffee is our love language,<br>from start to finish."</span>
+  <div class="slogan-sub">— The Cloud Nine Philosophy · @cloudnine_eg</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-l">
+        <img class="about-img-main" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=85" alt="Cloud Nine Coffee" />
+        <img class="about-img-accent" src="https://images.unsplash.com/photo-1485808191679-5f86510bd9d3?w=400&q=85" alt="Cortado" />
+        <div class="about-label">Est. 2020</div>
+      </div>
+      <div class="reveal-r">
+        <div class="eyebrow"><div class="eyebrow-line"></div><span>Our Story</span></div>
+        <h2 class="sec-title" style="margin-bottom:1.75rem">Where every cup<br>tells a <em>story</em></h2>
+        <p>Cloud Nine was born in Sheikh Zayed from one conviction: <strong>great coffee should be an experience, not just a habit.</strong> We set out to build a space — warm, unhurried, and honest — where the ritual of coffee is celebrated properly.</p>
+        <p>From our <strong>Spanish Latte</strong> (a firm crowd favourite) to our meticulously brewed filtered coffee, every drink is crafted with the same intention: <strong>make you feel something.</strong></p>
+        <p>We now have three locations across Sheikh Zayed, and every one of them carries the same cosy, welcoming energy that earned us <strong>4.6★ and 209 Google reviews.</strong></p>
+        <div class="pills-row">
+          <div class="pill"><span class="pill-icon">☕</span> Great Coffee</div>
+          <div class="pill"><span class="pill-icon">🥐</span> Fresh Bakeries</div>
+          <div class="pill"><span class="pill-icon">🍵</span> Great Tea Selection</div>
+          <div class="pill"><span class="pill-icon">🧁</span> Great Desserts</div>
+          <div class="pill"><span class="pill-icon">🏠</span> Cosy Atmosphere</div>
+          <div class="pill"><span class="pill-icon">📍</span> 3 Locations</div>
+        </div>
+        <div class="about-stats">
+          <div><span class="a-stat-num" data-target="209">0</span><div class="a-stat-lbl">Google Reviews</div></div>
+          <div><span class="a-stat-num" data-target="9488">0</span><div class="a-stat-lbl">Instagram Followers</div></div>
+          <div><span class="a-stat-num" data-target="3">0</span><div class="a-stat-lbl">Locations</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="feats-dark">
+  <div class="feats-inner">
+    <div class="feat-card reveal"><span class="feat-icon">🥐</span><div class="feat-title">Fresh Bakeries Daily</div><p class="feat-text">From buttery croissants to the legendary pistachio croissant — baked fresh every morning.</p></div>
+    <div class="feat-card reveal" style="transition-delay:.1s"><span class="feat-icon">🚗</span><div class="feat-title">Kerbside Pickup</div><p class="feat-text">Pull up, we bring your order out. Fast, easy, and your coffee stays hot.</p></div>
+    <div class="feat-card reveal" style="transition-delay:.2s"><span class="feat-icon">🌿</span><div class="feat-title">Outdoor Seating</div><p class="feat-text">Fresh air, great coffee. Enjoy the outdoors at our Al Sheikh Zayed and Dunes Hub locations.</p></div>
+    <div class="feat-card reveal" style="transition-delay:.3s"><span class="feat-icon">📍</span><div class="feat-title">3 Convenient Spots</div><p class="feat-text">Al Shabab Rd · Dunes Hub · Move Club. A Cloud Nine is always close by.</p></div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu" class="menu-section">
+  <div class="menu-inner">
+    <div class="reveal"><div class="eyebrow"><div class="eyebrow-line"></div><span>What We Brew</span></div><h2 class="sec-title" style="margin-bottom:2rem">The <em>Menu</em></h2></div>
+
+    <!-- Real menu board photos -->
+    <div class="menu-photos reveal">
+      <div class="menu-photo"><img src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?w=800&q=85" alt="Menu - Hot Coffee"/></div>
+      <div class="menu-photo"><img src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=800&q=85" alt="Menu - Matcha & Non-Coffee"/></div>
+      <div class="menu-photo"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800&q=85" alt="Menu - Iced Coffee"/></div>
+      <div class="menu-photo"><img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=800&q=85" alt="Spanish Latte"/></div>
+    </div>
+
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="switchTab(this,'hot')">Hot Coffee</button>
+      <button class="menu-tab" onclick="switchTab(this,'iced')">Iced Coffee</button>
+      <button class="menu-tab" onclick="switchTab(this,'matcha')">Matcha</button>
+      <button class="menu-tab" onclick="switchTab(this,'noncoffee')">Non-Coffee</button>
+    </div>
+
+    <!-- HOT COFFEE -->
+    <div class="menu-panel active" id="panel-hot">
+      <div class="menu-grid">
+        <div class="menu-item"><div><div class="mi-name">Espresso</div><div class="mi-desc">A perfect short shot — intense, sweet, silky crema.</div></div><div class="mi-price">50</div></div>
+        <div class="menu-item"><div><div class="mi-name">Americano</div><div class="mi-desc">Espresso pulled long with hot water. Bold and clean.</div></div><div class="mi-price">55</div></div>
+        <div class="menu-item"><div><div class="mi-name">Cortado / Piccolo</div><div class="mi-desc">Equal espresso and warm milk. Tight and balanced.</div><span class="mi-tag">Popular</span></div><div class="mi-price">65</div></div>
+        <div class="menu-item"><div><div class="mi-name">Macchiato</div><div class="mi-desc">Espresso stained with a touch of velvety foam.</div></div><div class="mi-price">65</div></div>
+        <div class="menu-item"><div><div class="mi-name">Flat White</div><div class="mi-desc">Ristretto base with silky microfoam — smooth and full.</div></div><div class="mi-price">70</div></div>
+        <div class="menu-item"><div><div class="mi-name">Latte</div><div class="mi-desc">Our canvas for latte art. Creamy, comforting.</div></div><div class="mi-price">75 / 85</div></div>
+        <div class="menu-item"><div><div class="mi-name">Cappuccino</div><div class="mi-desc">Equal thirds espresso, steamed milk, and cloud-like foam.</div></div><div class="mi-price">75 / 85</div></div>
+        <div class="menu-item"><div><div class="mi-name">Spanish Latte</div><div class="mi-desc">Condensed milk base with espresso and steamed milk.</div><span class="mi-tag">⭐ Fan Favourite</span></div><div class="mi-price">95</div></div>
+        <div class="menu-item"><div><div class="mi-name">Mocha / White Mocha</div><div class="mi-desc">Espresso with chocolate or white chocolate syrup.</div></div><div class="mi-price">95</div></div>
+        <div class="menu-item"><div><div class="mi-name">Caramel Macchiato</div><div class="mi-desc">Layered espresso over vanilla milk with caramel drizzle.</div></div><div class="mi-price">90</div></div>
+        <div class="menu-item"><div><div class="mi-name">Filtered Coffee</div><div class="mi-desc">Manual pour-over, single-origin bean of the day.</div><span class="mi-tag hot">Specialty</span></div><div class="mi-price">105</div></div>
+        <div class="menu-item"><div><div class="mi-name">Turkish Coffee</div><div class="mi-desc">Traditional preparation — rich, thick, aromatic.</div></div><div class="mi-price">40</div></div>
+      </div>
+    </div>
+
+    <!-- ICED COFFEE -->
+    <div class="menu-panel" id="panel-iced">
+      <div class="menu-grid">
+        <div class="menu-item"><div><div class="mi-name">Iced Americano</div><div class="mi-desc">Shots over ice, topped with cold filtered water.</div></div><div class="mi-price">65</div></div>
+        <div class="menu-item"><div><div class="mi-name">Iced Latte</div><div class="mi-desc">Double shot over ice, cold milk. Crisp and clean.</div></div><div class="mi-price">80</div></div>
+        <div class="menu-item"><div><div class="mi-name">Ice Caramel Latte</div><div class="mi-desc">Espresso, caramel syrup, and cold milk over ice.</div></div><div class="mi-price">90</div></div>
+        <div class="menu-item"><div><div class="mi-name">Ice Salted Caramel Latte</div><div class="mi-desc">Sweet caramel with a pinch of sea salt. Irresistible.</div><span class="mi-tag">Popular</span></div><div class="mi-price">90</div></div>
+        <div class="menu-item"><div><div class="mi-name">Ice Spanish Latte</div><div class="mi-desc">The beloved Spanish Latte — served iced.</div><span class="mi-tag">⭐ Fan Favourite</span></div><div class="mi-price">90</div></div>
+        <div class="menu-item"><div><div class="mi-name">Ice Mocha / White Mocha</div><div class="mi-desc">Chocolate or white chocolate espresso on ice.</div></div><div class="mi-price">90</div></div>
+        <div class="menu-item"><div><div class="mi-name">Cold Brew</div><div class="mi-desc">18-hour steep. Low-acid, smooth, naturally sweet.</div></div><div class="mi-price">85</div></div>
+        <div class="menu-item"><div><div class="mi-name">Espresso Freddo</div><div class="mi-desc">Shaken double espresso over ice — Greek-style refreshment.</div></div><div class="mi-price">60</div></div>
+        <div class="menu-item"><div><div class="mi-name">Afogatto</div><div class="mi-desc">Hot espresso poured over vanilla gelato. Indulgent.</div></div><div class="mi-price">85</div></div>
+        <div class="menu-item"><div><div class="mi-name">Frappe (Flavoured)</div><div class="mi-desc">Blended iced coffee, your choice of flavour.</div></div><div class="mi-price">90</div></div>
+        <div class="menu-item"><div><div class="mi-name">Frappe Lotus</div><div class="mi-desc">Creamy blended coffee with Biscoff. A dream.</div><span class="mi-tag">Popular</span></div><div class="mi-price">100</div></div>
+        <div class="menu-item"><div><div class="mi-name">Mocha Frappe</div><div class="mi-desc">Blended chocolate espresso frappe with whipped cream.</div></div><div class="mi-price">90</div></div>
+      </div>
+    </div>
+
+    <!-- MATCHA -->
+    <div class="menu-panel" id="panel-matcha">
+      <div class="menu-grid">
+        <div class="menu-item"><div><div class="mi-name">Matcha Latte</div><div class="mi-desc">Ceremonial grade matcha whisked with steamed milk. Earthy, smooth.</div></div><div class="mi-price">80</div></div>
+        <div class="menu-item"><div><div class="mi-name">Matcha Frappe</div><div class="mi-desc">Blended matcha, milk, and ice. Refreshing green goodness.</div></div><div class="mi-price">90</div></div>
+        <div class="menu-item"><div><div class="mi-name">Cloud Nine Matcha</div><div class="mi-desc">Our signature matcha blend — ask your barista for today's special touch.</div><span class="mi-tag">Signature</span></div><div class="mi-price">95</div></div>
+      </div>
+    </div>
+
+    <!-- NON-COFFEE -->
+    <div class="menu-panel" id="panel-noncoffee">
+      <div class="menu-section-head">Tea</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div><div class="mi-name">Black Tea</div><div class="mi-desc">Classic, clean, perfectly steeped.</div></div><div class="mi-price">40</div></div>
+        <div class="menu-item"><div><div class="mi-name">Flavoured Tea</div><div class="mi-desc">Seasonal fruit and herbal blends.</div></div><div class="mi-price">45</div></div>
+        <div class="menu-item"><div><div class="mi-name">Iced Tea (Flavoured)</div><div class="mi-desc">Chilled tea, bright flavours over ice.</div></div><div class="mi-price">60</div></div>
+      </div>
+      <div class="menu-section-head">Chocolate & Drinks</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div><div class="mi-name">Hot Chocolate</div><div class="mi-desc">Rich, creamy, topped with foam.</div></div><div class="mi-price">80</div></div>
+        <div class="menu-item"><div><div class="mi-name">Iced Chocolate</div><div class="mi-desc">Cold chocolate milk over ice — a crowd pleaser.</div></div><div class="mi-price">85</div></div>
+        <div class="menu-item"><div><div class="mi-name">Fresh Juices</div><div class="mi-desc">Pressed to order from seasonal fruits.</div></div><div class="mi-price">55</div></div>
+        <div class="menu-item"><div><div class="mi-name">Fresh Smoothies</div><div class="mi-desc">Blended fruit smoothies, thick and natural.</div></div><div class="mi-price">65</div></div>
+        <div class="menu-item"><div><div class="mi-name">Mojito (Original / Flavoured)</div><div class="mi-desc">Mint, lime, sparkling water — your pick of flavour.</div></div><div class="mi-price">75</div></div>
+        <div class="menu-item"><div><div class="mi-name">Red Bull Mojito</div><div class="mi-desc">Mojito with a Red Bull kick. Original or flavoured.</div><span class="mi-tag">Popular</span></div><div class="mi-price">90</div></div>
+      </div>
+    </div>
+
+    <p style="font-size:.72rem;color:var(--muted);margin-top:1.5rem;text-align:center">All prices in EGP · Menu subject to change · Ask about today's specials</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section reveal" style="padding-bottom:2rem"><div class="eyebrow"><div class="eyebrow-line"></div><span>The Atmosphere</span></div><h2 class="sec-title">Come as <em>you are</em></h2></div>
+  <div class="gallery-mosaic">
+    <div class="gm-img"><img src="storefront.jpg" alt="Cloud Nine storefront"/><div class="gm-overlay"></div></div>
+    <div class="gm-img"><img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&q=85" alt="Spanish Latte"/><div class="gm-overlay"></div></div>
+    <div class="gm-img"><img src="https://images.unsplash.com/photo-1485808191679-5f86510bd9d3?w=600&q=85" alt="Cortado"/><div class="gm-overlay"></div></div>
+    <div class="gm-img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80" alt="Coffee cup"/><div class="gm-overlay"></div></div>
+    <div class="gm-img"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" alt="Latte art"/><div class="gm-overlay"></div></div>
+    <div class="gm-img"><img src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&q=80" alt="Pastries"/><div class="gm-overlay"></div></div>
+    <div class="gm-img"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" alt="Barista"/><div class="gm-overlay"></div></div>
+    <div class="gm-img"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=600&q=80" alt="Coffee beans"/><div class="gm-overlay"></div></div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<div class="philo-wrap">
+  <div class="philo-left">
+    <div class="philo-left-ov">
+      <blockquote class="philo-quote">"Making coffee is our love language, from start to finish."
+        <span class="philo-author">— Cloud Nine · @cloudnine_eg</span>
+      </blockquote>
+    </div>
+  </div>
+  <div class="philo-right">
+    <div class="philo-item reveal"><div class="philo-num">01</div><div><div class="philo-ttl">We Craft With Intention</div><p class="philo-txt">Every drink is made with care — the right grind, the right temperature, the right pour. No shortcuts.</p></div></div>
+    <div class="philo-item reveal" style="transition-delay:.15s"><div class="philo-num">02</div><div><div class="philo-ttl">We Bake Fresh Daily</div><p class="philo-txt">Our pistachio croissant has its own fan club for a reason. Baked every morning, gone by afternoon.</p></div></div>
+    <div class="philo-item reveal" style="transition-delay:.3s"><div class="philo-num">03</div><div><div class="philo-ttl">We Create a Space You Love</div><p class="philo-txt">Cosy atmosphere, friendly staff, free parking — 20 reviews mention how cosy and welcoming Cloud Nine feels.</p></div></div>
+  </div>
+</div>
+
+<!-- LOCATIONS -->
+<section id="locations" class="locations-section">
+  <div class="loc-inner">
+    <div class="reveal"><div class="eyebrow"><div class="eyebrow-line"></div><span>Find Us</span></div><h2 class="sec-title">Three locations, <em>one standard</em></h2><p style="color:var(--muted);margin-top:.75rem;font-size:.95rem">All locations share the same menu, quality, and hours.</p></div>
+    <div class="loc-grid">
+      <div class="loc-card reveal">
+        <div class="loc-num">01</div>
+        <div class="loc-name">Al Shabab Road</div>
+        <p class="loc-addr">Al Shabab Rd, Second Al Sheikh Zayed<br>Giza Governorate 3244101<br>Plus Code: 2XPP+6P</p>
+        <span class="loc-tag">🚗 Free Parking Lot</span>
+        <a class="loc-cta" href="https://maps.app.goo.gl/qpsLkGYjaCrLXHeu6" target="_blank">Get Directions →</a>
+      </div>
+      <div class="loc-card reveal" style="transition-delay:.15s">
+        <div class="loc-num">02</div>
+        <div class="loc-name">Dunes Hub</div>
+        <p class="loc-addr">Dunes Hub Commercial<br>Sheikh Zayed, Giza</p>
+        <span class="loc-tag">🌿 Outdoor Seating</span>
+        <a class="loc-cta" href="https://maps.app.goo.gl/qpsLkGYjaCrLXHeu6" target="_blank">Get Directions →</a>
+      </div>
+      <div class="loc-card reveal" style="transition-delay:.3s">
+        <div class="loc-num">03</div>
+        <div class="loc-name">Move Club</div>
+        <p class="loc-addr">Move Club, Green Heights Compound<br>Sheikh Zayed, Giza</p>
+        <span class="loc-tag">💪 Inside Move Club</span>
+        <a class="loc-cta" href="https://maps.app.goo.gl/qpsLkGYjaCrLXHeu6" target="_blank">Get Directions →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews-section">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <div class="eyebrow" style="justify-content:center"><div class="eyebrow-line"></div><span>What Guests Say</span><div class="eyebrow-line"></div></div>
+      <h2 class="sec-title">Real words, <em>real coffee lovers</em></h2>
+      <div style="display:flex;justify-content:center">
+        <div class="rating-big">
+          <div class="rb-num">4.6</div>
+          <div>
+            <div class="rb-stars">★★★★★</div>
+            <div class="rb-count">Based on 209 Google reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="review-highlights reveal">
+      <div class="rh-chip">🏠 "Cozy atmosphere" — mentioned 20×</div>
+      <div class="rh-chip">😊 "Friendly staff" — mentioned 19×</div>
+      <div class="rh-chip">🥐 Pistachio croissant praised in dozens of reviews</div>
+      <div class="rh-chip">☕ "Great for working"</div>
+      <div class="rh-chip">🤫 "Quiet & relaxing"</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="rev-card reveal">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Coffee is great, pistachio croissant is delicious, and the place is so serene and relaxing. The barista is super nice and welcoming. Became my daily spot instantly."</p>
+        <div class="reviewer"><img class="rev-avatar" src="https://i.pravatar.cc/80?img=12" alt=""/><div><div class="rev-name">Sarah M.</div><div class="rev-date">2 weeks ago</div></div><div class="g-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84z" fill="#EA4335"/></svg> Google</div></div>
+      </div>
+      <div class="rev-card reveal" style="transition-delay:.15s">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"The Spanish Latte here is something else — it has the right balance of sweetness without being overwhelming. Staff are incredibly friendly. I always feel so welcome."</p>
+        <div class="reviewer"><img class="rev-avatar" src="https://i.pravatar.cc/80?img=33" alt=""/><div><div class="rev-name">Ahmed K.</div><div class="rev-date">1 month ago</div></div><div class="g-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84z" fill="#EA4335"/></svg> Google</div></div>
+      </div>
+      <div class="rev-card reveal" style="transition-delay:.3s">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Most cosy coffee shop in Sheikh Zayed without question. I come here to work and always end up staying three hours longer. The cortado is perfectly made. Highly recommend."</p>
+        <div class="reviewer"><img class="rev-avatar" src="https://i.pravatar.cc/80?img=47" alt=""/><div><div class="rev-name">Lina R.</div><div class="rev-date">3 weeks ago</div></div><div class="g-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84z" fill="#EA4335"/></svg> Google</div></div>
+      </div>
+    </div>
+    <div class="rev-cta-wrap"><a href="https://maps.app.goo.gl/qpsLkGYjaCrLXHeu6" target="_blank" class="btn-dark">Leave a Review on Google ↗</a></div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<div class="amenities-section">
+  <div class="reveal"><div class="eyebrow"><div class="eyebrow-line"></div><span>Everything You Need</span></div><h2 class="sec-title" style="margin-bottom:0">Good to <em>know</em></h2></div>
+  <div class="amenity-grid">
+    <div class="amenity-group reveal">
+      <div class="ag-title">Service Options</div>
+      <div class="ag-list">
+        <div class="ag-item"><span class="ag-check">✓</span> Dine-in</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Takeaway</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Kerbside pickup</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Outdoor seating</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Table service</div>
+      </div>
+    </div>
+    <div class="amenity-group reveal" style="transition-delay:.1s">
+      <div class="ag-title">Accessibility</div>
+      <div class="ag-list">
+        <div class="ag-item"><span class="ag-check">✓</span> Wheelchair-accessible car park</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Wheelchair-accessible entrance</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Wheelchair-accessible seating</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Good for kids</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Groups welcome</div>
+      </div>
+    </div>
+    <div class="amenity-group reveal" style="transition-delay:.2s">
+      <div class="ag-title">Payments</div>
+      <div class="ag-list">
+        <div class="ag-item"><span class="ag-check">✓</span> Credit cards</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Debit cards</div>
+        <div class="ag-item"><span class="ag-check">✓</span> NFC / mobile payments</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Cash accepted</div>
+      </div>
+    </div>
+    <div class="amenity-group reveal" style="transition-delay:.3s">
+      <div class="ag-title">Parking & Atmosphere</div>
+      <div class="ag-list">
+        <div class="ag-item"><span class="ag-check">✓</span> Free street parking</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Free parking lot</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Plenty of parking</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Casual, cosy atmosphere</div>
+        <div class="ag-item"><span class="ag-check">✓</span> Great for uni students</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VISIT / MAP -->
+<section id="visit">
+  <div class="visit-grid">
+    <div class="visit-info">
+      <h2 class="visit-title">Come find <em>your cloud.</em></h2>
+      <div class="v-block">
+        <div class="v-label">Phone</div>
+        <div class="v-value"><a href="tel:01000639806" style="color:var(--teal);text-decoration:none">010 0063 9806</a></div>
+      </div>
+      <div class="v-divider"></div>
+      <div class="v-block">
+        <div class="v-label">Opening Hours</div>
+        <div class="hours-row">
+          <div class="hours-item"><span class="hours-day">Monday – Thursday</span><span class="hours-time">7:00 AM – 1:00 AM</span></div>
+          <div class="hours-item"><span class="hours-day">Friday</span><span class="hours-time">1:00 PM – 1:00 AM</span></div>
+          <div class="hours-item hours-today"><span class="hours-day">Saturday <span class="open-badge">Today</span></span><span class="hours-time">7:00 AM – 1:00 AM</span></div>
+          <div class="hours-item"><span class="hours-day">Sunday</span><span class="hours-time">7:00 AM – 1:00 AM</span></div>
+        </div>
+      </div>
+      <div class="v-divider"></div>
+      <div class="v-block">
+        <div class="v-label">Follow Us</div>
+        <div class="v-value"><a href="https://instagram.com/cloudnine_eg" target="_blank" style="color:var(--teal);text-decoration:none">@cloudnine_eg</a> · 9,488 followers</div>
+      </div>
+      <div class="visit-btns">
+        <a href="https://maps.app.goo.gl/qpsLkGYjaCrLXHeu6" target="_blank" class="btn-teal">Get Directions</a>
+        <a href="tel:01000639806" class="btn-teal-o">Call Us</a>
+        <a href="https://instagram.com/cloudnine_eg" target="_blank" class="btn-teal-o">Instagram</a>
+      </div>
+    </div>
+    <div class="visit-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.5!2d30.9868639!3d30.0355391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14585955949666b7%3A0x873e2904515cf1b3!2sCloud%20nine%20specialty%20coffee!5e0!3m2!1sen!2seg!4v1!5m2!1sen!2seg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Cloud Nine Coffee Map"></iframe>
+      <div class="map-pin">📍 Cloud Nine Specialty Coffee</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="cta-inner">
+    <span class="cta-script">Come taste the difference</span>
+    <h2 class="cta-title">Your next favourite coffee moment is waiting in Sheikh Zayed</h2>
+    <p class="cta-sub">Three locations. Open daily from 7AM till 1AM (Fridays from 1PM). Dine-in, takeaway, or kerbside — your way.</p>
+    <div class="cta-btns">
+      <a href="#menu" class="btn-teal">Explore Menu</a>
+      <a href="https://maps.app.goo.gl/qpsLkGYjaCrLXHeu6" target="_blank" class="btn-outline-w">Get Directions</a>
+    </div>
+  </div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="insta-section">
+  <div class="insta-label">Follow Our Journey</div>
+  <div class="insta-handle">@cloudnine_eg on Instagram</div>
+  <div class="insta-stats">9,488 followers · 352 posts · Specialty Coffee & Fresh Bakeries</div>
+  <div class="insta-grid">
+    <div class="ig-img"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt=""/><div class="ig-hover">☕</div></div>
+    <div class="ig-img"><img src="https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=400&q=80" alt=""/><div class="ig-hover">🥐</div></div>
+    <div class="ig-img"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80" alt=""/><div class="ig-hover">☕</div></div>
+    <div class="ig-img"><img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=400&q=80" alt=""/><div class="ig-hover">☕</div></div>
+    <div class="ig-img"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400&q=80" alt=""/><div class="ig-hover">🌿</div></div>
+    <div class="ig-img"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=400&q=80" alt=""/><div class="ig-hover">☕</div></div>
+  </div>
+  <div style="margin-top:1.75rem"><a href="https://instagram.com/cloudnine_eg" target="_blank" class="btn-teal">Follow @cloudnine_eg</a></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <span class="ft-logo">Cloud Nine</span>
+      <span class="ft-logo-sub">Specialty Coffee</span>
+      <p class="ft-desc">Specialty coffee &amp; fresh bakeries in Sheikh Zayed, Giza. Three cosy locations, one obsession — great coffee, from start to finish.</p>
+      <div class="ft-phone">📞 <a href="tel:01000639806" style="color:inherit;text-decoration:none">010 0063 9806</a></div>
+    </div>
+    <div>
+      <div class="ft-head">Locations</div>
+      <ul class="ft-links">
+        <li><a>Al Shabab Road, 2nd Sheikh Zayed</a></li>
+        <li><a>Dunes Hub, Sheikh Zayed</a></li>
+        <li><a>Move Club, Green Heights</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Hours</div>
+      <ul class="ft-links">
+        <li><a>Mon – Thu, Sat – Sun: 7AM–1AM</a></li>
+        <li><a>Friday: 1PM–1AM</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-head">Follow</div>
+      <ul class="ft-links">
+        <li><a href="https://instagram.com/cloudnine_eg" target="_blank">Instagram · @cloudnine_eg</a></li>
+        <li><a href="https://maps.app.goo.gl/qpsLkGYjaCrLXHeu6" target="_blank">Google Maps · 4.6★</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Cloud Nine Specialty Coffee. All rights reserved.</span>
+    <span>Made with ☕ in Sheikh Zayed</span>
+  </div>
+</footer>
+
+<script>
+
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+
+// Hero bg
+setTimeout(()=>document.getElementById('hbg').classList.add('loaded'),80);
+
+// Mobile menu
+let mOpen=false;
+function toggleMob(){mOpen=!mOpen;document.getElementById('mob').classList.toggle('open',mOpen);document.body.style.overflow=mOpen?'hidden':''}
+function closeMob(){mOpen=false;document.getElementById('mob').classList.remove('open');document.body.style.overflow=''}
+
+// Menu tabs
+function switchTab(btn,p){
+  document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  const el=document.getElementById('panel-'+p);
+  el.classList.add('active');
+  el.style.animation='tabIn .35s ease both';
+}
+const ss=document.createElement('style');
+ss.textContent='@keyframes tabIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}';
+document.head.appendChild(ss);
+
+// Stat counters
+function animStats(){
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const t=+el.dataset.target;
+    let c=0;const step=t/55;
+    const timer=setInterval(()=>{
+      c=Math.min(c+step,t);
+      el.textContent=t>=1000?Math.round(c).toLocaleString()+(t>100?'+':''):Math.round(c)+(t>10?'':'');
+      if(c>=t)clearInterval(timer);
+    },22);
+  });
+}
+const so=new IntersectionObserver(e=>{if(e[0].isIntersecting){animStats();so.disconnect()}},{threshold:.4});
+const st=document.querySelector('.about-stats');if(st)so.observe(st);
+
+// Reveal
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')}),{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>ro.observe(el));
+
+// Parallax hero
+window.addEventListener('scroll',()=>{const hbg=document.getElementById('hbg');if(hbg)hbg.style.transform=`scale(1) translateY(${scrollY*.28}px)`});
+
+// Highlight today
+(function(){const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];const today=new Date().getDay();const d=days[today];const items=document.querySelectorAll('.hours-item');items.forEach(i=>{const day=i.querySelector('.hours-day');if(day&&day.textContent.includes(d.slice(0,3))){i.classList.add('hours-today');if(!day.querySelector('.open-badge')){const b=document.createElement('span');b.className='open-badge';b.textContent='Today';day.appendChild(b)}}else{i.classList.remove('hours-today');const b=i.querySelector('.open-badge');if(b&&!b.textContent.includes('Today')){}else if(b&&b.textContent==='Today'&&!day.textContent.includes(d.slice(0,3))){b.remove()}}})})();
+</script>
+</body>
+</html>
